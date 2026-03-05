@@ -1,0 +1,14 @@
+DATA PROVENANCE & LICENSE NOTES
+
+- Telco-Customer-Churn.csv:
+  Raw file URL (IBM public GitHub):
+  https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv
+
+  Upstream repository:
+  https://github.com/IBM/telco-customer-churn-on-icp4d
+
+  Repository license: Apache-2.0 (see upstream repo for the authoritative license text).
+
+- Synthetic SaaS dataset:
+  Generated locally by src/churn_artefact/data/synthetic.py.
+  This is a controlled simulation for methodological evaluation; it does not represent real customer data.

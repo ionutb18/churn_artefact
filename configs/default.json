@@ -1,0 +1,83 @@
+{
+  "random_seed": 42,
+  "runs": [
+    {
+      "name": "telco",
+      "dataset": {
+        "kind": "telco_ibm",
+        "path": "data/raw/Telco-Customer-Churn.csv"
+      },
+      "split": {
+        "train_size": 0.7,
+        "val_size": 0.15,
+        "test_size": 0.15
+      },
+      "tuning": {
+        "n_iter": 40,
+        "cv_folds": 5
+      },
+      "calibration": {
+        "enabled": true,
+        "method": "sigmoid"
+      },
+      "thresholding": {
+        "policy": "max_f1_on_val",
+        "top_k_fraction": 0.1,
+        "cost_fn": 10.0,
+        "cost_fp": 1.0
+      },
+      "interpretability": {
+        "permutation_importance": true,
+        "shap": true,
+        "shap_sample_size": 500
+      },
+      "models": [
+        "logreg",
+        "rf",
+        "xgb"
+      ]
+    },
+    {
+      "name": "saas_synth",
+      "dataset": {
+        "kind": "synthetic_saas",
+        "path": "data/synthetic/saas_synth.csv",
+        "generator": {
+          "n_rows": 5000,
+          "churn_rate_target": 0.22,
+          "label_noise": 0.05,
+          "time_index": true
+        }
+      },
+      "split": {
+        "train_size": 0.7,
+        "val_size": 0.15,
+        "test_size": 0.15
+      },
+      "tuning": {
+        "n_iter": 40,
+        "cv_folds": 5
+      },
+      "calibration": {
+        "enabled": true,
+        "method": "sigmoid"
+      },
+      "thresholding": {
+        "policy": "top_k",
+        "top_k_fraction": 0.1,
+        "cost_fn": 10.0,
+        "cost_fp": 1.0
+      },
+      "interpretability": {
+        "permutation_importance": true,
+        "shap": true,
+        "shap_sample_size": 800
+      },
+      "models": [
+        "logreg",
+        "rf",
+        "xgb"
+      ]
+    }
+  ]
+}
